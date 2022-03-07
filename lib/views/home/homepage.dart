@@ -7,7 +7,7 @@ import 'package:minhajul_islam/widgets/popular_categories.dart';
 import 'package:minhajul_islam/widgets/search_box.dart';
 
 class Homepage extends StatefulWidget {
-  Homepage({Key? key}) : super(key: key);
+  const Homepage({Key? key}) : super(key: key);
 
   @override
   State<Homepage> createState() => _HomepageState();
@@ -61,9 +61,9 @@ class _HomepageState extends State<Homepage> {
   AppBar _appBar() {
     return AppBar(
       elevation: 0,
-      leading: const Icon(
-        Icons.clean_hands_outlined,
-        color: Colors.yellow,
+      leading: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Image.asset("assets/icon/hand_wave.png"),
       ),
       title: Column(
         mainAxisAlignment: MainAxisAlignment.start,

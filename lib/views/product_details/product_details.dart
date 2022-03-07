@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:minhajul_islam/model/products.dart';
 import 'package:minhajul_islam/theme/themes.dart';
 
@@ -12,38 +11,7 @@ class ProductDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: const Text(
-          "Details",
-          style: TextStyle(color: Colors.black),
-        ),
-        centerTitle: true,
-        actions: [
-          Container(
-            height: 40,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: bgColor,
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Icon(
-                Icons.favorite,
-                color: Colors.red,
-                size: 20,
-              ),
-            ),
-          ),
-          const SizedBox(width: 8),
-        ],
-      ),
+      appBar: _appBar(context),
       body: Column(
         children: [
           Padding(
@@ -96,7 +64,7 @@ class ProductDetails extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.blueGrey.shade200,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(20.0),
                     topRight: Radius.circular(20.0)),
               ),
@@ -105,7 +73,7 @@ class ProductDetails extends StatelessWidget {
                 children: [
                   Text(
                     "\$" + productListData.price.toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
@@ -139,6 +107,41 @@ class ProductDetails extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  AppBar _appBar(BuildContext context) {
+    return AppBar(
+      leading: IconButton(
+        icon: const Icon(
+          Icons.arrow_back,
+          color: Colors.black,
+        ),
+        onPressed: () => Navigator.of(context).pop(),
+      ),
+      title: const Text(
+        "Details",
+        style: TextStyle(color: Colors.black),
+      ),
+      centerTitle: true,
+      actions: [
+        Container(
+          height: 40,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.red,
+          ),
+          child: const Padding(
+            padding: EdgeInsets.all(4.0),
+            child: Icon(
+              Icons.favorite,
+              color: Colors.white,
+              size: 20,
+            ),
+          ),
+        ),
+        const SizedBox(width: 8),
+      ],
     );
   }
 }
