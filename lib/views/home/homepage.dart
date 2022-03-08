@@ -1,5 +1,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:minhajul_islam/views/category/category.dart';
 
 import 'package:minhajul_islam/widgets/custom_product_card.dart';
 import 'package:minhajul_islam/widgets/custome_title.dart';
@@ -81,7 +83,10 @@ class _HomepageState extends State<Homepage> {
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+                CupertinoPageRoute(builder: (_) => const CategoryScreen()));
+          },
           icon: const Icon(Icons.menu),
           color: Colors.grey,
         )

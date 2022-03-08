@@ -31,6 +31,7 @@ class CustomProductCard extends StatelessWidget {
                   crossAxisCount: 1,
                   childAspectRatio: 1.4,
                 ),
+                itemCount: data.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:minhajul_islam/theme/themes.dart';
-import 'package:minhajul_islam/views/category/category.dart';
+import 'package:minhajul_islam/views/home/homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Minhajul Islam',
       theme: ThemeData(colorScheme: const ColorScheme.light(primary: white)),
-      home: const CategoryScreen(),
+      home: const Homepage(),
     );
   }
 }
