@@ -4,12 +4,14 @@ import 'package:minhajul_islam/services/api_services.dart';
 
 class ProductController extends GetxController {
   var dataList = <Products>[].obs;
+  var isLoaded = false.obs;
 
   loadData() async {
     var allData = await ApiServices.fetchProductsData();
 
     if (allData != null) {
       dataList.value = allData;
+      isLoaded.value = true;
     } else {
       return null;
     }
@@ -17,7 +19,6 @@ class ProductController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     loadData();
   }

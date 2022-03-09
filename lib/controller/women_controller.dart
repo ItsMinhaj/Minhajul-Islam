@@ -4,12 +4,14 @@ import 'package:minhajul_islam/services/api_services.dart';
 
 class WomenClothController extends GetxController {
   var products = <WomenClothing>[].obs;
+  var isLoaded = false.obs;
 
   fetchWomenClothData() async {
     var womenCloth = await ApiServices.fetchWomenCloths();
 
     if (womenCloth != null) {
       products.value = womenCloth;
+      isLoaded.value = true;
     } else {
       return null;
     }
@@ -17,7 +19,6 @@ class WomenClothController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     fetchWomenClothData();
   }

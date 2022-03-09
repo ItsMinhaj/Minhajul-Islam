@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:minhajul_islam/theme/themes.dart';
 import 'package:minhajul_islam/views/category/components/category_items.dart';
@@ -16,11 +17,13 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
+  int initialIndex = 2;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
+        extendBody: true,
         backgroundColor: bgColor,
         appBar: _appBar(),
         body: Column(
@@ -28,12 +31,26 @@ class _CategoryScreenState extends State<CategoryScreen> {
             const SizedBox(height: 12),
             const CategoryPageTitle(),
             const SizedBox(height: 10),
-
             SizedBox(
               child: TabBar(
                   indicatorColor: Colors.transparent,
                   isScrollable: true,
                   tabs: [
+                    SizedBox(
+                        width: 100,
+                        child: Tab(
+                          child: CategoryItem(
+                            icon: Icons.shopping_bag,
+                            name: "Electronics",
+                          ),
+                        )),
+                    SizedBox(
+                        width: 100,
+                        child: Tab(
+                            child: CategoryItem(
+                          icon: Icons.shopping_bag,
+                          name: "Jewelery",
+                        ))),
                     SizedBox(
                       width: 70,
                       child: Tab(
@@ -51,34 +68,29 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                        width: 100,
-                        child: Tab(
-                          child: CategoryItem(
-                            icon: Icons.shopping_bag,
-                            name: "Electronics",
-                          ),
-                        )),
-                    SizedBox(
-                        width: 100,
-                        child: Tab(
-                            child: CategoryItem(
-                          icon: Icons.shopping_bag,
-                          name: "Jewelery",
-                        ))),
                   ]),
             ),
             const SizedBox(height: 20),
-
             Expanded(
               child: TabBarView(children: [
-                MensClothingCard(),
-                WomensClothingCard(),
                 ElectronicProductCard(),
                 JeweleryProductCard(),
+                MensClothingCard(),
+                WomensClothingCard(),
               ]),
             )
-            //   ElectronicProductCard(),
+          ],
+        ),
+        bottomNavigationBar: CurvedNavigationBar(
+          buttonBackgroundColor: Colors.indigo,
+          backgroundColor: Colors.transparent,
+          index: initialIndex,
+          items: const [
+            Icon(Icons.inbox_rounded),
+            Icon(Icons.favorite_outline),
+            Icon(Icons.add_shopping_cart, color: Colors.grey),
+            Icon(Icons.book_sharp),
+            Icon(Icons.person),
           ],
         ),
       ),
@@ -111,6 +123,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
           color: Colors.black,
           size: 30,
         ),
+        SizedBox(width: 8),
       ],
     );
   }

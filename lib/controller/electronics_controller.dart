@@ -4,12 +4,14 @@ import 'package:minhajul_islam/services/api_services.dart';
 
 class ElectronicsController extends GetxController {
   var products = <Electronics>[].obs;
+  var isLoaded = false.obs;
 
-  Future fetchElectronicsData() async {
+  fetchElectronicsData() async {
     var electronics = await ApiServices.fetchElectronics();
 
     if (electronics != null) {
       products.value = electronics;
+      isLoaded.value = true;
     } else {
       return null;
     }

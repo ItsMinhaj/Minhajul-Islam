@@ -1,12 +1,13 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:minhajul_islam/theme/themes.dart';
 import 'package:minhajul_islam/views/category/category.dart';
 
-import 'package:minhajul_islam/widgets/custom_product_card.dart';
+import 'package:minhajul_islam/views/home/custom_product_card.dart';
 import 'package:minhajul_islam/widgets/custome_title.dart';
 import 'package:minhajul_islam/widgets/popular_categories.dart';
 import 'package:minhajul_islam/widgets/search_box.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -16,16 +17,13 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  int navIndex = 0;
-
-  List<IconData> iconList = [
-    Icons.home,
-    Icons.shopping_cart_outlined,
-  ];
+  int navIndex = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
+      backgroundColor: bgColor,
       appBar: _appBar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -42,19 +40,20 @@ class _HomepageState extends State<Homepage> {
           ],
         ),
       ),
-      bottomNavigationBar: AnimatedBottomNavigationBar(
-        icons: iconList,
-        activeIndex: navIndex,
-        activeColor: Colors.blue,
-        gapLocation: GapLocation.center,
-        notchSmoothness: NotchSmoothness.verySmoothEdge,
-        leftCornerRadius: 32,
-        rightCornerRadius: 32,
-        onTap: (p) {
-          setState(() {
-            navIndex = p;
-          });
-        },
+      bottomNavigationBar: CurvedNavigationBar(
+        items: const [
+          Icon(Icons.home),
+          Icon(
+            Icons.mic,
+            color: Colors.white,
+          ),
+          Icon(Icons.shopping_cart_outlined)
+        ],
+        height: 60,
+        buttonBackgroundColor: Colors.orangeAccent,
+        backgroundColor: Colors.transparent,
+        index: navIndex,
+
         //other params
       ),
     );

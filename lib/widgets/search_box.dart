@@ -19,6 +19,8 @@ class SearchBox extends StatelessWidget {
           color: bgColor,
         ),
         child: Container(
+          decoration: BoxDecoration(
+              color: white, borderRadius: BorderRadius.circular(25)),
           child: Row(
             children: const [
               SizedBox(width: 16.0),
