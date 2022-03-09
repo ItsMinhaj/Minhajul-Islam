@@ -36,7 +36,7 @@ class _HomepageState extends State<Homepage> {
             const SizedBox(height: 20),
             const CustomTitleName(title: "Popular Categories"),
             const SizedBox(height: 20),
-            BuildPopularCategories(),
+            const BuildPopularCategories(),
           ],
         ),
       ),

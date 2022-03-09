@@ -15,7 +15,7 @@ class CustomTitleName extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             color: titleColor,
             fontWeight: FontWeight.bold,
             fontSize: 16,

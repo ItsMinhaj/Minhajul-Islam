@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:minhajul_islam/controller/product_controller.dart';
-import 'package:minhajul_islam/services/api_services.dart';
 import 'package:minhajul_islam/theme/themes.dart';
 import 'package:minhajul_islam/views/product_details/product_details.dart';
 
@@ -11,7 +10,7 @@ class CustomProductCard extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  ProductController productController = Get.put(ProductController());
+  final ProductController productController = Get.put(ProductController());
 
   @override
   Widget build(BuildContext context) {

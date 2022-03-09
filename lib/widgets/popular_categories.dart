@@ -4,9 +4,9 @@ import 'package:minhajul_islam/data/popular_category.dart';
 import 'package:minhajul_islam/views/category/category.dart';
 
 class BuildPopularCategories extends StatelessWidget {
-  BuildPopularCategories({Key? key}) : super(key: key);
+  const BuildPopularCategories({Key? key}) : super(key: key);
 
-  int index = 0;
+  final index = 0;
 
   @override
   Widget build(BuildContext context) {

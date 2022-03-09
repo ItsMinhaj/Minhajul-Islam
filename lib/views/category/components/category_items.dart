@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CategoryItem extends StatelessWidget {
-  CategoryItem({
+  const CategoryItem({
     required this.icon,
     required this.name,
     Key? key,
   }) : super(key: key);
 
-  IconData icon;
-  String name;
+  final IconData icon;
+  final String name;
 
   @override
   Widget build(BuildContext context) {

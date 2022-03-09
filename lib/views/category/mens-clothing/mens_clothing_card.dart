@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:minhajul_islam/controller/men_controller.dart';
-import 'package:minhajul_islam/services/api_services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class MensClothingCard extends StatelessWidget {
@@ -9,7 +8,7 @@ class MensClothingCard extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  MenClothController menClothController = Get.put(MenClothController());
+  final MenClothController menClothController = Get.put(MenClothController());
 
   @override
   Widget build(BuildContext context) {

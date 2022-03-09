@@ -8,7 +8,7 @@ class ElectronicProductCard extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  ElectronicsController electronicsController =
+  final ElectronicsController electronicsController =
       Get.put(ElectronicsController());
 
   @override

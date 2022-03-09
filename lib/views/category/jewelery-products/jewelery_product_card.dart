@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:minhajul_islam/controller/jewelery_controller.dart';
-import 'package:minhajul_islam/services/api_services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class JeweleryProductCard extends StatelessWidget {
@@ -9,7 +8,7 @@ class JeweleryProductCard extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  JewelerController jewelerController = Get.put(JewelerController());
+  final jewelerController = Get.put(JewelerController());
 
   @override
   Widget build(BuildContext context) {

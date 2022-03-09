@@ -31,7 +31,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             const SizedBox(height: 12),
             const CategoryPageTitle(),
             const SizedBox(height: 10),
-            SizedBox(
+            const SizedBox(
               child: TabBar(
                   indicatorColor: Colors.transparent,
                   isScrollable: true,

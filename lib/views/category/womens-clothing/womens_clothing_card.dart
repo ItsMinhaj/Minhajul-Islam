@@ -8,7 +8,8 @@ class WomensClothingCard extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  WomenClothController womenClothController = Get.put(WomenClothController());
+  final WomenClothController womenClothController =
+      Get.put(WomenClothController());
   @override
   Widget build(BuildContext context) {
     return Column(
