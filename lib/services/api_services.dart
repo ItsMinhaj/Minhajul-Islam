@@ -39,7 +39,7 @@ class ApiServices {
       }
       return electronicLists;
     } else {
-      return electronicLists;
+      return null;
     }
   }
 
@@ -57,7 +57,7 @@ class ApiServices {
       }
       return jeweleryLists;
     } else {
-      return jeweleryLists;
+      return null;
     }
   }
 
@@ -75,7 +75,7 @@ class ApiServices {
       }
       return menClothingList;
     } else {
-      return menClothingList;
+      return null;
     }
   }
 
@@ -93,7 +93,7 @@ class ApiServices {
       }
       return womenClothingList;
     } else {
-      return womenClothingList;
+      return null;
     }
   }
 }

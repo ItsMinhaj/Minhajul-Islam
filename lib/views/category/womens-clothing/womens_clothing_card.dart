@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:minhajul_islam/controller/women_controller.dart';
 import 'package:minhajul_islam/services/api_services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class WomensClothingCard extends StatelessWidget {
-  const WomensClothingCard({
+  WomensClothingCard({
     Key? key,
   }) : super(key: key);
 
+  WomenClothController womenClothController = Get.put(WomenClothController());
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -21,104 +24,113 @@ class WomensClothingCard extends StatelessWidget {
                     child: CircularProgressIndicator(),
                   );
                 }
-                var data = ApiServices.womenClothingList;
+
                 return Expanded(
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      childAspectRatio: 0.8,
-                    ),
-                    itemCount: data.length,
-                    itemBuilder: (context, index) {
-                      return Card(
-                        elevation: 1,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Stack(
-                          children: [
-                            Positioned(
-                              right: 0,
-                              child: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.favorite,
-                                  color: Colors.grey,
-                                  size: 18,
+                  child: GetX<WomenClothController>(builder: (controller) {
+                    return GridView.builder(
+                      shrinkWrap: true,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10,
+                        childAspectRatio: 0.8,
+                      ),
+                      itemCount: controller.products.length,
+                      itemBuilder: (context, index) {
+                        return Card(
+                          elevation: 1,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Stack(
+                            children: [
+                              Positioned(
+                                right: 0,
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.favorite,
+                                    color: Colors.grey,
+                                    size: 18,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image(
-                                  height: 100,
-                                  image: NetworkImage(
-                                      data[index].image.toString()),
-                                ),
-                                const SizedBox(height: 8),
-                                const SizedBox(height: 4),
-                                Wrap(
-                                  children: [
-                                    Text(
-                                      data[index].title.toString(),
-                                      textAlign: TextAlign.center,
-                                      style: const TextStyle(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 8),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "\$ " + data[index].price.toString(),
-                                      textAlign: TextAlign.center,
-                                      style: const TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    RatingBar.builder(
-                                      itemSize: 14,
-                                      initialRating: double.parse(
-                                          data[index].rating!.rate.toString()),
-                                      minRating: 1,
-                                      direction: Axis.horizontal,
-                                      allowHalfRating: true,
-                                      itemCount: 5,
-                                      itemPadding: const EdgeInsets.symmetric(
-                                          horizontal: 4.0),
-                                      itemBuilder: (context, _) => const Icon(
-                                        Icons.star,
-                                        color: Colors.amber,
-                                        size: 14,
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image(
+                                    height: 100,
+                                    image: NetworkImage(controller
+                                        .products[index].image
+                                        .toString()),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  const SizedBox(height: 4),
+                                  Wrap(
+                                    children: [
+                                      Text(
+                                        controller.products[index].title
+                                            .toString(),
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.bold),
                                       ),
-                                      onRatingUpdate: (rating) {
-                                        print(rating);
-                                      },
-                                    ),
-                                    Text("(" +
-                                        data[index].rating!.rate.toString() +
-                                        ")"),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "\$ " +
+                                            controller.products[index].price
+                                                .toString(),
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      RatingBar.builder(
+                                        itemSize: 14,
+                                        initialRating: double.parse(controller
+                                            .products[index].rating!.rate
+                                            .toString()),
+                                        minRating: 1,
+                                        direction: Axis.horizontal,
+                                        allowHalfRating: true,
+                                        itemCount: 5,
+                                        itemPadding: const EdgeInsets.symmetric(
+                                            horizontal: 4.0),
+                                        itemBuilder: (context, _) => const Icon(
+                                          Icons.star,
+                                          color: Colors.amber,
+                                          size: 14,
+                                        ),
+                                        onRatingUpdate: (rating) {
+                                          print(rating);
+                                        },
+                                      ),
+                                      Text("(" +
+                                          controller
+                                              .products[index].rating!.rate
+                                              .toString() +
+                                          ")"),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  }),
                 );
               },
             ),

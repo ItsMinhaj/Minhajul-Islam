@@ -30,14 +30,14 @@ class _HomepageState extends State<Homepage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView(
-          children: const [
-            SearchBox(),
-            CustomTitleName(title: "Daily Deals"),
-            SizedBox(height: 20),
+          children: [
+            const SearchBox(),
+            const CustomTitleName(title: "Daily Deals"),
+            const SizedBox(height: 20),
             CustomProductCard(),
-            SizedBox(height: 20),
-            CustomTitleName(title: "Popular Categories"),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
+            const CustomTitleName(title: "Popular Categories"),
+            const SizedBox(height: 20),
             BuildPopularCategories(),
           ],
         ),

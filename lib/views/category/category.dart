@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:minhajul_islam/theme/themes.dart';
+import 'package:minhajul_islam/views/category/components/category_items.dart';
 import 'package:minhajul_islam/views/category/electronic-products/electronic_product_card.dart';
 import 'package:minhajul_islam/views/category/jewelery-products/jewelery_product_card.dart';
 
-import 'components/category_items.dart';
 import 'components/category_page_title.dart';
 import 'mens-clothing/mens_clothing_card.dart';
 import 'womens-clothing/womens_clothing_card.dart';
@@ -15,71 +15,79 @@ class CategoryScreen extends StatefulWidget {
   State<CategoryScreen> createState() => _CategoryScreenState();
 }
 
-class _CategoryScreenState extends State<CategoryScreen>
-    with SingleTickerProviderStateMixin {
-  TabController? _tabController;
-
-  @override
-  void initState() {
-    _tabController = TabController(length: 4, vsync: this);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _tabController!.dispose();
-  }
-
+class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: bgColor,
-      appBar: _appBar(),
-      body: Column(
-        children: [
-          const SizedBox(height: 20),
-          const CategoryPageTitle(),
-          const SizedBox(height: 20),
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        backgroundColor: bgColor,
+        appBar: _appBar(),
+        body: Column(
+          children: [
+            const SizedBox(height: 12),
+            const CategoryPageTitle(),
+            const SizedBox(height: 10),
 
-          TabBar(
-              controller: _tabController,
-              indicatorColor: Colors.red,
-              indicator: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-              ),
-              tabs: [
-                Tab(
-                    child: CategoryItem(
-                        icon: Icons.shopping_bag, name: "Men Cloth's")),
-                Tab(
-                    child: CategoryItem(
-                        icon: Icons.shopping_bag, name: "Women Cloth's")),
-                Tab(
-                    child: CategoryItem(
-                        icon: Icons.shopping_bag, name: "Electronics")),
-                Tab(
-                    child: CategoryItem(
-                        icon: Icons.shopping_bag, name: "Jwellery")),
+            SizedBox(
+              child: TabBar(
+                  indicatorColor: Colors.transparent,
+                  isScrollable: true,
+                  tabs: [
+                    SizedBox(
+                      width: 70,
+                      child: Tab(
+                          child: CategoryItem(
+                        icon: Icons.shopping_bag,
+                        name: "Mens",
+                      )),
+                    ),
+                    SizedBox(
+                      width: 80,
+                      child: Tab(
+                        child: CategoryItem(
+                          icon: Icons.shopping_bag,
+                          name: "Women",
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                        width: 100,
+                        child: Tab(
+                          child: CategoryItem(
+                            icon: Icons.shopping_bag,
+                            name: "Electronics",
+                          ),
+                        )),
+                    SizedBox(
+                        width: 100,
+                        child: Tab(
+                            child: CategoryItem(
+                          icon: Icons.shopping_bag,
+                          name: "Jewelery",
+                        ))),
+                  ]),
+            ),
+            const SizedBox(height: 20),
+
+            Expanded(
+              child: TabBarView(children: [
+                MensClothingCard(),
+                WomensClothingCard(),
+                ElectronicProductCard(),
+                JeweleryProductCard(),
               ]),
-          const SizedBox(height: 20),
-
-          Expanded(
-            child: TabBarView(controller: _tabController, children: const [
-              MensClothingCard(),
-              WomensClothingCard(),
-              ElectronicProductCard(),
-              JeweleryProductCard()
-            ]),
-          )
-          //   ElectronicProductCard(),
-        ],
+            )
+            //   ElectronicProductCard(),
+          ],
+        ),
       ),
     );
   }
 
   AppBar _appBar() {
     return AppBar(
+      backgroundColor: bgColor,
       elevation: 0,
       title: const Text.rich(
         TextSpan(
@@ -103,7 +111,6 @@ class _CategoryScreenState extends State<CategoryScreen>
           color: Colors.black,
           size: 30,
         ),
-        SizedBox(width: 8),
       ],
     );
   }

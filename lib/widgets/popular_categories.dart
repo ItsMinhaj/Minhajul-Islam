@@ -1,8 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:minhajul_islam/data/popular_category.dart';
+import 'package:minhajul_islam/views/category/category.dart';
+import 'package:minhajul_islam/views/category/electronic-products/electronic_product_card.dart';
+import 'package:minhajul_islam/views/category/jewelery-products/jewelery_product_card.dart';
 
 class BuildPopularCategories extends StatelessWidget {
-  const BuildPopularCategories({Key? key}) : super(key: key);
+  BuildPopularCategories({Key? key}) : super(key: key);
+
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
